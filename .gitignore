@@ -1,1 +1,5 @@
 __pycache__/
+*.PNG
+*.png
+.DS_Store
+*.jpg
