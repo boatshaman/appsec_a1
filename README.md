@@ -1,5 +1,5 @@
-###### Application Security - Assignment 1
-# Image Resizer
+###### Application Security - Assignment 1 
+# Image Resizer [![Build Status](https://travis-ci.com/boatshaman/appsec_a1.svg?branch=master)](https://travis-ci.com/boatshaman/appsec_a1)
 
 Basic python script to resize an image to a square. Fills in extra space with the color black. 
 I've added Travis CI to the project but only have a placeholder test at the moment in [test_image_resize.py](https://github.com/boatshaman/appsec_a1/blob/master/test_image_resize.py)
