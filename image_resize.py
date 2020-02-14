@@ -6,26 +6,29 @@ Program for cropping image into a square
 import sys
 from PIL import Image
 
-findCenter = lambda x, y: int((x-y)/2) # for finding location to paste image in created square
+FIND_CENTER = lambda x, y: int((x-y)/2) # for finding location to paste image in created square
 
 def crop_image(img):
+    """Return cropped image object."""
     fill_color = (0, 0, 0, 0) # black background
     width, height = img.width, img.height
     size = max(width, height)
-    squareImg = Image.new('RGBA', (size, size), fill_color)
-    squareImg.paste(img, (findCenter(size, width), findCenter(size, height))) # pastes image in center of square
-    return squareImg
+    square_img = Image.new('RGBA', (size, size), fill_color)
+    square_img.paste(img, (FIND_CENTER(size, width), FIND_CENTER(size, height)))
+    return square_img
 
-def main(image):
-    i = Image.open(image)
-    newImage = crop_image(i)
-    newImage.save("square_%s" % i.filename , i.format)
+def main(image_file):
+    """Open image file and save new, cropped image."""
+    og_image = Image.open(image_file)
+    new_image = crop_image(og_image)
+    new_image.save("square_%s" % og_image.filename, og_image.format)
 
 if __name__ == "__main__":
+    IMAGE_NAME = ""
     try:
-        image_name = sys.argv[1]
-    except:
+        IMAGE_NAME = sys.argv[1]
+    except IndexError:
         print("Usage: ./image_resize.py image_name")
         sys.exit(1)
 
-    main(image_name)
+    main(IMAGE_NAME)
